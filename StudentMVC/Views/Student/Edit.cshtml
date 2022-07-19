@@ -1,0 +1,43 @@
+﻿@model Student
+
+<form method="post" asp-action="Edit">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-light">Edit Student</h2>
+			<hr />
+		</div>
+		<div asp-validation-summary="All"></div>
+		<div class="mb-3">
+			<label asp-for="Name"></label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="DOB"></label>
+			<input asp-for="DOB" class="form-control" />
+			<span asp-validation-for="DOB" class="text-danger"></span>
+		</div>
+		<div>
+            <label asp-for="Major" class="control-label"></label>
+            <select class="form-control"
+                asp-for="Major"
+                asp-items="@Html.GetEnumSelectList<Major>()">
+            </select>
+        </div>
+		<div class="mb-3">
+			<label asp-for="GPA"></label>
+			<input asp-for="GPA" class="form-control" />
+			<span asp-validation-for="GPA" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+		<a asp-controller="Student" asp-action="Index" class="btn btn-secondary" style="width:150px">
+			Back to List
+		</a>
+	</div>
+</form>
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
